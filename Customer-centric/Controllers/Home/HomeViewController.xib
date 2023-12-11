@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Customer_centric" customModuleProvider="target">
+            <connections>
+                <outlet property="labelLastVisited" destination="UzJ-lV-lVq" id="OOr-uI-94G"/>
+                <outlet property="labelNoticeAndEvents" destination="O2P-xT-SYB" id="K1V-OW-1Tn"/>
+                <outlet property="labelSustainability" destination="ctR-UA-PYx" id="Tre-FX-ZHa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewHeader" destination="NlL-Zu-QEy" id="tA7-Fv-aYA"/>
+                <outlet property="viewLastVisited" destination="ZFW-rl-21S" id="leL-Vh-H80"/>
+                <outlet property="viewNoticeAndEvents" destination="Z30-4E-BYh" id="18f-F4-PMu"/>
+                <outlet property="viewSustainability" destination="rZY-gm-YBi" id="oYn-kT-7ih"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NlL-Zu-QEy" customClass="CustomHeaderView" customModule="Customer_centric" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="59" width="393" height="114"/>
+                    <color key="backgroundColor" name="gradientGreen"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="X9K-g3-268">
+                    <rect key="frame" x="10" y="202" width="373" height="586"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7Xa-Hp-sHI">
+                            <rect key="frame" x="0.0" y="0.0" width="373" height="24"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house-door" translatesAutoresizingMaskIntoConstraints="NO" id="Otf-Ck-nxO">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="Dk2-3V-cap"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inicio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhQ-Sn-hfb">
+                                    <rect key="frame" x="35" y="0.0" width="338" height="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mcf-Ow-b7z">
+                            <rect key="frame" x="0.0" y="41" width="373" height="545"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ultimo visitado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzJ-lV-lVq">
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="17"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFW-rl-21S" customClass="CustomCardView" customModule="Customer_centric" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="27" width="373" height="128"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IrY-No-mO9">
+                                    <rect key="frame" x="0.0" y="165" width="373" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="2DX-Cr-bKN"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Noticias y Eventos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2P-xT-SYB">
+                                    <rect key="frame" x="0.0" y="225" width="373" height="17"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z30-4E-BYh" customClass="CustomCardView" customModule="Customer_centric" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="252" width="373" height="128"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sostenibilidad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctR-UA-PYx">
+                                    <rect key="frame" x="0.0" y="390" width="373" height="17"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rZY-gm-YBi" customClass="CustomCardView" customModule="Customer_centric" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="417" width="373" height="128"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="backgroundNice"/>
+            <constraints>
+                <constraint firstItem="NlL-Zu-QEy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2XP-bA-avd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NlL-Zu-QEy" secondAttribute="trailing" id="DIp-ED-Dc8"/>
+                <constraint firstItem="NlL-Zu-QEy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OVL-ia-QNn"/>
+                <constraint firstItem="X9K-g3-268" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="PnB-tb-oVL"/>
+                <constraint firstItem="X9K-g3-268" firstAttribute="top" secondItem="NlL-Zu-QEy" secondAttribute="bottom" constant="29" id="gue-iC-qof"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="X9K-g3-268" secondAttribute="trailing" constant="10" id="rah-oD-whw"/>
+            </constraints>
+            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="house-door" width="20" height="20"/>
+        <namedColor name="backgroundNice">
+            <color red="0.94901960784313721" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gradientGreen">
+            <color red="0.0" green="0.57647058823529407" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

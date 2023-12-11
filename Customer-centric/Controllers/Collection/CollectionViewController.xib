@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CollectionViewController" customModule="Customer_centric" customModuleProvider="target">
+            <connections>
+                <outlet property="labelMyLibrary" destination="UXx-OA-h6A" id="JZZ-bq-BhI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewAdvisorMuleteers" destination="eot-cx-Mxu" id="urc-56-J5S"/>
+                <outlet property="viewAdvisorsPymes" destination="zIP-yi-MVq" id="e9h-XT-cmW"/>
+                <outlet property="viewComprehensiveSheet" destination="8hk-LI-hsw" id="9fQ-Y4-mcc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rw6-dH-N3H" customClass="CustomHeaderView" customModule="Customer_centric" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="59" width="393" height="114"/>
+                    <color key="backgroundColor" name="gradientGreen"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jjg-al-3r5">
+                    <rect key="frame" x="10" y="202" width="373" height="445"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="c1v-Zi-EG7">
+                            <rect key="frame" x="0.0" y="0.0" width="373" height="24"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folderOpen" translatesAutoresizingMaskIntoConstraints="NO" id="CwR-2u-XXx">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="qKa-lS-Uys"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mi Biblioteca" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXx-OA-h6A">
+                                    <rect key="frame" x="35" y="0.0" width="338" height="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="j2I-qq-jZ0">
+                            <rect key="frame" x="0.0" y="41" width="373" height="404"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hk-LI-hsw" customClass="CustomCardView" customModule="Customer_centric" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="128"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zIP-yi-MVq" customClass="CustomCardView" customModule="Customer_centric" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="138" width="373" height="128"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eot-cx-Mxu" customClass="CustomCardView" customModule="Customer_centric" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="276" width="373" height="128"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="backgroundNice"/>
+            <constraints>
+                <constraint firstItem="Rw6-dH-N3H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0Oj-He-MjG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rw6-dH-N3H" secondAttribute="trailing" id="0Yi-Oe-GS0"/>
+                <constraint firstItem="Jjg-al-3r5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="4Og-oI-oQe"/>
+                <constraint firstItem="Rw6-dH-N3H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lbe-m4-pbo"/>
+                <constraint firstItem="Jjg-al-3r5" firstAttribute="top" secondItem="Rw6-dH-N3H" secondAttribute="bottom" constant="29" id="n8c-Sw-VsC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Jjg-al-3r5" secondAttribute="trailing" constant="10" id="sj4-RF-JKz"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="folderOpen" width="20" height="20"/>
+        <namedColor name="backgroundNice">
+            <color red="0.94901960784313721" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gradientGreen">
+            <color red="0.0" green="0.57647058823529407" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

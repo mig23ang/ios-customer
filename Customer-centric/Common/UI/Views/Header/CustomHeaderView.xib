@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomHeaderView" customModule="Customer_centric" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonBack" destination="hC1-iO-3bO" id="xnn-lv-it2"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="0g7-Q7-Wb5"/>
+                <outlet property="labelName" destination="MsB-sO-ybC" id="wHE-g6-FV8"/>
+                <outlet property="labelWelcome" destination="Q4X-Z8-9CR" id="Cam-x7-RTe"/>
+                <outlet property="viewContainerButtonBack" destination="F6y-pX-hA8" id="6bI-Ey-jgN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="95"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lZl-tf-ZS5">
+                    <rect key="frame" x="20" y="10" width="353" height="65"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hola, Geraldine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-sO-ybC">
+                            <rect key="frame" x="0.0" y="0.0" width="353" height="35"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenida a mi MiBancoAPP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4X-Z8-9CR">
+                            <rect key="frame" x="0.0" y="40" width="353" height="25"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F6y-pX-hA8">
+                            <rect key="frame" x="0.0" y="65" width="353" height="30"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hC1-iO-3bO">
+                                    <rect key="frame" x="0.0" y="0.0" width="76.333333333333329" height="30"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="   Volver" image="arrow"/>
+                                    <connections>
+                                        <action selector="buttonBackAction:" destination="-1" eventType="touchUpInside" id="26u-iA-J3T"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="hC1-iO-3bO" secondAttribute="bottom" id="JvH-4Z-2TK"/>
+                                <constraint firstItem="hC1-iO-3bO" firstAttribute="top" secondItem="F6y-pX-hA8" secondAttribute="top" id="VXH-Zc-FlP"/>
+                                <constraint firstItem="hC1-iO-3bO" firstAttribute="leading" secondItem="F6y-pX-hA8" secondAttribute="leading" id="hiA-g2-CIx"/>
+                                <constraint firstAttribute="height" constant="30" id="y6A-rL-0JD"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="gradientGreen"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lZl-tf-ZS5" secondAttribute="trailing" constant="20" id="0G3-L2-Uzr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lZl-tf-ZS5" secondAttribute="bottom" constant="20" id="9pk-0X-8PF"/>
+                <constraint firstItem="lZl-tf-ZS5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="esg-49-DEr"/>
+                <constraint firstAttribute="top" secondItem="lZl-tf-ZS5" secondAttribute="top" constant="-10" id="wOK-eq-iFK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="75.572519083969468" y="-275"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow" width="13" height="8"/>
+        <namedColor name="gradientGreen">
+            <color red="0.0" green="0.57647058823529407" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

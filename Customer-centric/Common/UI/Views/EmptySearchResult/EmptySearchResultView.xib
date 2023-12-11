@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptySearchResultView" customModule="Customer_centric" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonTryAgain" destination="Uyj-Kw-qOT" id="kQ3-dO-lqh"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="He7-ni-duQ"/>
+                <outlet property="labelMessage" destination="cFy-Oe-bbE" id="fei-mB-DOH"/>
+                <outlet property="labelTitleContent" destination="yie-oA-HSO" id="Vqg-bl-10Q"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="291"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="quo-ca-jdl">
+                    <rect key="frame" x="20" y="23" width="353" height="125"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yie-oA-HSO">
+                            <rect key="frame" x="0.0" y="0.0" width="353" height="24"/>
+                            <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
+                            <color key="textColor" name="bodyTextBlack"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFy-Oe-bbE">
+                            <rect key="frame" x="0.0" y="40" width="353" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                            <color key="textColor" name="bodyTextBlack"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyj-Kw-qOT">
+                            <rect key="frame" x="0.0" y="73" width="353" height="52"/>
+                            <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="UeU-su-MpQ"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Intentar de nuevo"/>
+                            <connections>
+                                <action selector="buttonTryAgainAction:" destination="-1" eventType="touchUpInside" id="yAv-zh-YhJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyCrossRed" translatesAutoresizingMaskIntoConstraints="NO" id="8AW-CU-g8M">
+                    <rect key="frame" x="166.66666666666666" y="-49" width="60" height="60"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="backgroundNice"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="quo-ca-jdl" secondAttribute="trailing" constant="20" id="0uc-Sa-uTI"/>
+                <constraint firstItem="8AW-CU-g8M" firstAttribute="centerX" secondItem="quo-ca-jdl" secondAttribute="centerX" id="H33-p5-Wr5"/>
+                <constraint firstItem="quo-ca-jdl" firstAttribute="top" secondItem="8AW-CU-g8M" secondAttribute="bottom" constant="12" id="RfR-Ch-1FV"/>
+                <constraint firstItem="quo-ca-jdl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-60" id="g0k-8z-NaB"/>
+                <constraint firstItem="quo-ca-jdl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="vp0-TD-bdC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="26.717557251908396" y="-208.80281690140845"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="emptyCrossRed" width="60" height="60"/>
+        <namedColor name="backgroundNice">
+            <color red="0.94901960784313721" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="bodyTextBlack">
+            <color red="0.12941176470588237" green="0.14509803921568629" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
