@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     
     private var viewModel = LoginViewModel()
     
-    var subscriptions = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()

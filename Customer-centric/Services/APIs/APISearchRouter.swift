@@ -11,7 +11,7 @@ import UIKit
 
 enum APISearchRouter: APIConfiguration {
     
-    case searchByDocument(documentType: String, documentNumber: String)
+    case searchByDocument(documentType: String, documentNumber: String, digitVerification: String)
     case searchByName(name: String, paginator: Paginator)
  
     var method: HTTPMethod {
@@ -23,8 +23,8 @@ enum APISearchRouter: APIConfiguration {
 
     var path: String {
         switch self {
-        case .searchByDocument(let documentType, let documentNumber):
-            return Constants.API.oauth.searchByDocument + "\(documentType)/\(documentNumber)"
+        case .searchByDocument(let documentType, let documentNumber, let digitVerification):
+            return Constants.API.oauth.searchByDocument + "\(documentType)/\(documentNumber)/\(digitVerification)"
         case .searchByName(let name, _):
             return Constants.API.oauth.searchByName + "\(name)"
         }

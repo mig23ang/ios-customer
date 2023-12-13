@@ -48,4 +48,11 @@ extension UIViewController {
         
         return presentedViewController
     }
+    
+    static func returnRootViewController() -> UIViewController {
+        guard let rootViewController : UIViewController = UIApplication.shared.keyWindow?.rootViewController else {
+            fatalError("there is no view controller presented on screen.")
+        }
+        return rootViewController
+    }
 }
