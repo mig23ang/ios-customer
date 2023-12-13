@@ -103,6 +103,22 @@ struct Constants {
                 static let errorName = "Debes ingresar un nombre"
                 static let errorDigitVerification = "Debes seleccionar un digito de verificación"
             }
+            
+            struct SearchResult {
+                static let resultsFoundsTo = "Resultados encontrados para “%@” (%d)"
+                static let resultFounds = "Encontrados (%d)"
+            }
+            
+            struct DetailClient {
+                static let basicData = "Datos Básicos"
+                static let offersAndAlerts = "Ofertas y Alertas"
+                static let centralRisk = "Centrales de riesgo"
+                static let loanHistory = "Historial Préstamos"
+                static let rotatingQuota = "Cupo Rotativo"
+                static let passives = "Pasivos"
+                static let contactHistory = "Historial Contactos"
+                static let PQR = "PQR"
+            }
         }
     }
 }

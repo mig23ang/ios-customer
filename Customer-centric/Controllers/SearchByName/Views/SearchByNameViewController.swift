@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Combine
 
 class SearchByNameViewController: BaseViewController {
-
+    
     @IBOutlet weak var viewCustomTextfieldChooseDigitVerification: CustomTextFieldView!
     @IBOutlet weak var labelChooseDigitVerification: UILabel!
     @IBOutlet weak var buttonArrowDownSelectDigitVerification: UIButton!
@@ -34,28 +35,26 @@ class SearchByNameViewController: BaseViewController {
     @IBOutlet weak var buttonName: UIButton!
     
     let indicatorView = UIView()
-    
-    var filterType : FilterSearchByName = .name
-    
+ 
     var emptyView: EmptySearchResultView!
     
-    enum FilterSearchByName {
-        case name
-        case documentNumber
-    }
+    private var viewModel = SearchByNameViewModel()
+    
+    // preferable to keep different sets of AnyCancellable in your ViewModels and ViewControllers. This respects the single responsibility principle and ensures that subscriptions are appropriately managed based on the lifecycle of each component.
+    private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureNavigationBar()
         prepareView()
     }
-
+    
     @IBAction func buttonNameOrSocialReasonAction(_ sender: UIButton) {
         buttonName.select()
         buttonDocument.deselect()
         positionIndicator(under: buttonName)
-        filterType = .name
+        viewModel.filterType = .name
         stackViewSearchByName.isHidden = false
         stackViewSearchByDocument.isHidden = true
         viewCustomTextfieldSelectDocument.textfield.text = nil
@@ -68,7 +67,7 @@ class SearchByNameViewController: BaseViewController {
         buttonName.deselect()
         buttonDocument.select()
         positionIndicator(under: buttonDocument)
-        filterType = .documentNumber
+        viewModel.filterType = .documentNumber
         stackViewSearchByName.isHidden = true
         stackViewSearchByDocument.isHidden = false
         viewCustomTextfieldSearch.textfield.text = nil
@@ -99,16 +98,14 @@ class SearchByNameViewController: BaseViewController {
         guard validateTextFields() else {
             return
         }
-        
-        setupEmptyView(show: true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        indicatorView.alpha = 0
-        indicatorView.backgroundColor = UIColor(named: "gradientGreen")
-        viewContainer.addSubview(indicatorView)
-        positionIndicator(under: buttonName)
+        viewModel.errorMessage = nil
+        FactoryLoader.createCustomLoader(inView: UIViewController.returnRootViewController().view)
+        switch viewModel.filterType {
+        case .name:
+            viewModel.searchByName(name: viewCustomTextfieldSearch.textfield.text!)
+        case .documentNumber:
+            viewModel.searchByDocument(documentType: viewCustomTextfieldSelectDocument.textfield.text!, documentNumber: viewCustomTextfieldSearchByDocument.textfield.text!, digitVerification: viewCustomTextfieldChooseDigitVerification.textfield.text!)
+        }
     }
     
     private func setupEmptyView(show: Bool) {
@@ -129,10 +126,87 @@ class SearchByNameViewController: BaseViewController {
             }
         }
     }
+    
+    private func makeConnection() {
+        viewModel.$searchResponse
+            .sink { [weak self] searchResponse in
+                FactoryLoader.removeCustomLoader(fromView: UIViewController.returnRootViewController().view)
+                guard let strongSelf = self,
+                let searchResponse = searchResponse else {
+                    return
+                }
+              
+                if searchResponse.clientes.isEmpty {
+                    strongSelf.setupEmptyView(show: true)
+                    return
+                }
+                strongSelf.setupEmptyView(show: false)
+                
+                let searchResultViewModel = SearchResultViewModel()
+                searchResultViewModel.clients = searchResponse.clientes
+                searchResultViewModel.textToSearch = strongSelf.viewCustomTextfieldSearch.textfield.text ?? ""
+                searchResultViewModel.searchResponse =  searchResponse
+                searchResultViewModel.typeFilter = strongSelf.viewModel.filterType
+                
+                strongSelf.goToSearchResult(viewModel: searchResultViewModel)
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMessage
+            .sink { [weak self] errorMessage in
+                FactoryLoader.removeCustomLoader(fromView: UIViewController.returnRootViewController().view)
+                guard let strongSelf = self else {
+                    return
+                }
+  
+                if let errorMessage = errorMessage {
+                    Toast(
+                        text: errorMessage,
+                        container: nil,
+                        viewController: strongSelf,
+                        direction: .bottom,
+                        shouldAddExtraBottomMargin: true
+                    )
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$clientDetail
+            .dropFirst()
+            .sink { [weak self] clientDetail in
+                FactoryLoader.removeCustomLoader(fromView: UIViewController.returnRootViewController().view)
+                guard let strongSelf = self,
+                let clientDetail = clientDetail,
+                      let socialReason = clientDetail.socialReason else {
+                    self?.setupEmptyView(show: true)
+                    return
+                }
+    
+                let searchResultViewModel = SearchResultViewModel()
+                searchResultViewModel.clients = [Client(tipoDocumento: strongSelf.viewCustomTextfieldSelectDocument.textfield.text!, numeroDocumento: strongSelf.viewCustomTextfieldSearchByDocument.textfield.text!, nombreCompleto: socialReason, fechaUltimaActualizacion: clientDetail.lastUpdateDate ?? "", paisOrigen: "")]
+                searchResultViewModel.typeFilter = strongSelf.viewModel.filterType
+                
+                strongSelf.goToSearchResult(viewModel: searchResultViewModel)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func goToSearchResult(viewModel: SearchResultViewModel) {
+        let vc = SearchResultViewController()
+        vc.viewModel = viewModel
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension SearchByNameViewController {
     func prepareView() {
+        
+        //configure indicator base button
+        indicatorView.alpha = 0
+        indicatorView.backgroundColor = UIColor(named: "gradientGreen")
+        viewContainer.addSubview(indicatorView)
+        positionIndicator(under: buttonName)
+        
         viewTitleClient.labelContent.text = Constants.Strings.Controllers.SearchByName.comprehensiveClient
         viewTitleClient.typeImageBackground = .yellowOffShadow
         viewTitleClient.typeContent = .title
@@ -176,6 +250,8 @@ extension SearchByNameViewController {
         
         buttonClean.layer.borderColor = UIColor(named: "primaryGreen")!.cgColor
         buttonClean.layer.borderWidth = 1
+        
+        makeConnection()
     }
     
     private func positionIndicator(under button: UIButton) {
@@ -203,12 +279,12 @@ extension SearchByNameViewController : UITextFieldDelegate {
             view.endEditing(true)
         }
     }
-
+    
     private func validateTextFields() -> Bool {
         
         var isValid = true
         
-        switch filterType {
+        switch viewModel.filterType {
         case .name:
             if let nameText = viewCustomTextfieldSearch.textfield.text,
                nameText.isBlank() {
@@ -218,7 +294,7 @@ extension SearchByNameViewController : UITextFieldDelegate {
                 viewCustomTextfieldSearch.errorMessage = nil
             }
         case .documentNumber:
-
+            
             if let typeDocumentText = viewCustomTextfieldSelectDocument.textfield.text,
                typeDocumentText.isBlank() {
                 viewCustomTextfieldSelectDocument.errorMessage = Constants.Strings.Controllers.SearchByName.errorTypeDocument
@@ -264,4 +340,9 @@ extension SearchByNameViewController : UITextFieldDelegate {
         }
         self.present(modalVC, animated: true, completion: nil)
     }
+}
+
+enum FilterSearchByName {
+    case name
+    case documentNumber
 }

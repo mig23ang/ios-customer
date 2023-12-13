@@ -10,8 +10,7 @@ import Combine
 import Alamofire
 
 class SearchByNameViewModel: ObservableObject {
-    @Published var searchResults: [Client] = []
-    @Published var totalClientes: Int = 0
+    @Published var searchResponse: SearchResponse?
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var clientDetail: ClientDetail? 
@@ -20,12 +19,11 @@ class SearchByNameViewModel: ObservableObject {
 
     private let apiService = APIService.shared
     private var paginator = Paginator(page: 1, pageSize: 10)
-    private var name: String = ""
+
+    var filterType : FilterSearchByName = .name
     
     func searchByName(name: String) {
         isLoading = true
-        errorMessage = nil
-        self.name = name
         let router = APISearchRouter.searchByName(name: name, paginator: paginator)
 
         apiService.requestPublisher(router)
@@ -36,23 +34,15 @@ class SearchByNameViewModel: ObservableObject {
                     self?.errorMessage = error.localizedDescription
                 }
             }, receiveValue: { [weak self] (response: SearchResponse) in
-                self?.searchResults = response.clientes
-                self?.totalClientes = response.totalClientes
+                self?.searchResponse = response
             })
             .store(in: &cancellables)
     }
 
-    func loadMoreResults() {
-        paginator.incrementPage()
-        searchByName(name: self.name)
-    }
-    
-    
-    func searchByDocument(documentType: String, documentNumber: String) {
+    func searchByDocument(documentType: String, documentNumber: String, digitVerification: String) {
         isLoading = true
-        errorMessage = nil
-
-        let router = APISearchRouter.searchByDocument(documentType: documentType, documentNumber: documentNumber)
+        
+        let router = APISearchRouter.searchByDocument(documentType: documentType, documentNumber: documentNumber, digitVerification: digitVerification)
 
         apiService.requestPublisher(router)
             .receive(on: DispatchQueue.main)

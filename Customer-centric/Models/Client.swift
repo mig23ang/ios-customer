@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Client: Decodable {
+struct Client: Decodable, Equatable {
     var tipoDocumento: String
     var numeroDocumento: String
     var nombreCompleto: String

@@ -15,3 +15,11 @@ For additional info non related to changes in project's history, refer to the fi
 - functional login service integration
 - of recurring interfaces, and addition of validation and display of errors in textfields
 - error view and retry
+
+## [0.0.1] - (2) - 2023-12-13
+### Added
+- Validation empty state
+- Detail client
+- Sort list the users
+- List result users in search by name / document 
+- Search by name in list
